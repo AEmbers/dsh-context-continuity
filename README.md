@@ -1,5 +1,11 @@
 # dsh-context-continuity — one continuous context across many Sessions
 
+> [!IMPORTANT]
+> **This repository has moved.** Development now happens in the
+> [`wowyuarm/dsh-plugins`](https://github.com/wowyuarm/dsh-plugins) monorepo, under
+> `packages/context-continuity`. This repo is archived and read-only; the published
+> `@wowyuarm/dsh-context-continuity` npm package is unchanged. File issues and PRs against the monorepo.
+
 [English](README.md) | [简体中文](README.zh.md)
 
 [![npm](https://img.shields.io/npm/v/@wowyuarm/dsh-context-continuity?style=flat-square)](https://www.npmjs.com/package/@wowyuarm/dsh-context-continuity)

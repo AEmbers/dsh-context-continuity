@@ -1,5 +1,10 @@
 # dsh-context-continuity —— 跨多个 Session 的一段连续 context
 
+> [!IMPORTANT]
+> **本仓库已迁移。** 开发已转移到 monorepo
+> [`wowyuarm/dsh-plugins`](https://github.com/wowyuarm/dsh-plugins) 的 `packages/context-continuity`。
+> 本仓库已归档、只读；npm 包 `@wowyuarm/dsh-context-continuity` 不受影响。请到 monorepo 提 issue 和 PR。
+
 [English](README.md) | [简体中文](README.zh.md)
 
 [![npm](https://img.shields.io/npm/v/@wowyuarm/dsh-context-continuity?style=flat-square)](https://www.npmjs.com/package/@wowyuarm/dsh-context-continuity)
