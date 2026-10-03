@@ -12,6 +12,13 @@ The release notes below are upstream's own. They describe the upstream package
 name and, where they mention npm, the upstream publication — this fork is
 consumed from this repository, not from the registry.
 
+## 0.1.8
+
+### Patch Changes
+
+- **中文**：0.1.7 的 `prepare` 路线走不通。pnpm 拒绝为 git 托管的包执行构建脚本，除非**每一个消费者**都在自己的 `pnpm-workspace.yaml` 里按「解析后的 tarball URL + commit sha」逐版本放行（`ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED`）——那等于让每台宿主维护一张随版本漂移的清单。改为把 `lib/` 提交进仓库、撤掉 `prepare`：消费方零配置，代价是构建产物进版本库，所以 CI 增加一道闸门 —— 重新构建后 `git diff --exit-code lib`，`lib/` 一旦过期就红。
+- **English**: 0.1.7's `prepare` route does not work. pnpm refuses to execute a git-hosted package's build scripts unless *every consumer* allowlists it in its own `pnpm-workspace.yaml`, keyed by the resolved tarball URL and commit sha (`ERR_PNPM_GIT_DEP_PREPARE_NOT_ALLOWED`) — one entry per version, per host. Instead `lib/` is committed and `prepare` is removed, so consumers need no configuration. The cost is built output in version control, so CI gains a gate: a fresh build followed by `git diff --exit-code lib`, which goes red the moment `lib/` is stale.
+
 ## 0.1.7
 
 ### Patch Changes

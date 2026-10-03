@@ -1,5 +1,9 @@
 node_modules/
-lib/
 *.tsbuildinfo
 artifacts/
 .DS_Store
+
+# lib/ is committed on purpose. Consumers take this package straight from the
+# repository, and pnpm refuses to run a git-hosted package's build scripts
+# unless every consumer allowlists the resolved tarball, so the built output has
+# to travel with the source. CI fails when lib/ is stale.

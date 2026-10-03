@@ -5,8 +5,9 @@
 # resolve (see AGENTS.md: depending on prebuilt published packages is why this
 # package was extracted). Everything below runs from a bare checkout.
 #
-# Scope guard: one workflow, two jobs, exactly the three checks AGENTS.md names —
-# no coverage matrix, no release automation, no publish step. The windows lane is
+# Scope guard: one workflow, two jobs, the three checks AGENTS.md names plus the
+# committed-lib staleness gate — no coverage matrix, no release automation, no
+# publish step. The windows lane is
 # the regression fence for path, identifier and file-name handling on a real
 # Windows filesystem, the same class of bug the host repository fences off.
 name: ci
@@ -50,6 +51,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: lib/ is current
+        # lib/ is committed so consumers need no install-time build. This fails
+        # when a source change forgot to rebuild it. Linux only: a Windows
+        # checkout may normalise line endings and fail the comparison spuriously.
+        run: git diff --exit-code -- lib
 
   windows:
     runs-on: windows-latest
