@@ -22,7 +22,7 @@
  * lifecycle effect — the generation swap, the successor Session, the carried
  * input — happens after the result is durably appended, which is what makes a
  * half-done rollover recoverable from the log.
- * @module @wowyuarm/dsh-context-continuity/tools
+ * @module @aembers/dsh-context-continuity/tools
  */
 
 import { defineTool, type ToolDefinition, type ToolRunContext } from '@deepseek-ai/dsh-tools'
