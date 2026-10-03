@@ -12,6 +12,13 @@ The release notes below are upstream's own. They describe the upstream package
 name and, where they mention npm, the upstream publication — this fork is
 consumed from this repository, not from the registry.
 
+## 0.1.9
+
+### Patch Changes
+
+- **中文**：整条 DSH 线从 `0.2.0-rc.1/rc.2` 搬到 `0.2.1-alpha.1`：七个 `@deepseek-ai/dsh-*` peer 现在声明 `>=0.2.1-alpha.1 <0.2.2`，开发依赖钉在 `0.2.1-alpha.1` —— 声明的那条线就是测试实跑的那条线。`@deepseek-ai/cordis` 从 `^4.0.1` 改为 `~4.0.5-alpha.1`：候选线对 cordis 的声明是 `~4.0.5-alpha.1`，而按更早的 tuple 写的 caret 永远不会接受这个预发布版本，于是消费者的空目录安装会以 peer 冲突失败，而不是解析出宿主实际用的那份 cordis。`dsh-session-query` 仍是可选 peer。`src/` 与导出未动。
+- **English**: the whole DSH line moves from `0.2.0-rc.1/rc.2` to `0.2.1-alpha.1`: the seven `@deepseek-ai/dsh-*` peers now declare `>=0.2.1-alpha.1 <0.2.2` and the development dependencies pin `0.2.1-alpha.1` — the declared line is the line the tests run on. `@deepseek-ai/cordis` moves from `^4.0.1` to `~4.0.5-alpha.1`: the candidate line declares cordis at `~4.0.5-alpha.1`, and a caret written on an older tuple never admits that prerelease, so a consumer's empty-directory install failed with a peer conflict instead of resolving the cordis the host actually uses. `dsh-session-query` stays an optional peer. `src/` and the exports are untouched.
+
 ## 0.1.8
 
 ### Patch Changes
