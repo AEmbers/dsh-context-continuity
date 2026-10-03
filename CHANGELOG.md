@@ -12,6 +12,13 @@ The release notes below are upstream's own. They describe the upstream package
 name and, where they mention npm, the upstream publication — this fork is
 consumed from this repository, not from the registry.
 
+## 0.1.7
+
+### Patch Changes
+
+- **中文**：本 fork 自己的发布。`prepare` 在安装时生成 `lib/`，于是这个包可以被当作 git 依赖直接消费（`github:AEmbers/dsh-context-continuity#v0.1.7`），不再需要一个兄弟目录；`lib/` 依旧不进版本库。`src/`、导出与 peer 范围都没动。
+- **English**: this fork's own release. `prepare` builds `lib/` on install, so the package can be consumed directly as a git dependency (`github:AEmbers/dsh-context-continuity#v0.1.7`) with no sibling checkout; `lib/` still stays out of version control. `src/`, the exports and the peer range are untouched.
+
 ## 0.1.6
 
 ### Patch Changes

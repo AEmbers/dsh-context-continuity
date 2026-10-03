@@ -1,6 +1,6 @@
 {
   "name": "@aembers/dsh-context-continuity",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A subject's context lived as one continuous timeline across many physical Sessions: rollover, checkpoints, and lineage.",
   "license": "MIT",
   "repository": {
@@ -35,7 +35,8 @@
     "check:boundaries": "node scripts/check-boundaries.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "npm run check:boundaries && vitest run",
-    "build": "node -e \"require('node:fs').rmSync('lib',{recursive:true,force:true})\" && tsc -p tsconfig.build.json"
+    "build": "node -e \"require('node:fs').rmSync('lib',{recursive:true,force:true})\" && tsc -p tsconfig.build.json",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
