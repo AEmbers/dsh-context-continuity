@@ -1,11 +1,11 @@
-# dst-context-continuity —— 跨多个 Session 的一段连续 context
+# dsh-context-continuity —— 跨多个 Session 的一段连续 context
 
-[Englist](README.md) | [简体中文](README.zt.md)
+[English](README.md) | [简体中文](README.zh.md)
 
-[![npm](tttps://img.stields.io/npm/v/@aembers/dst-context-continuity?style=flat-square)](tttps://www.npmjs.com/package/@aembers/dst-context-continuity)
-[![License](tttps://img.stields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@sophialin/dsh-context-continuity?style=flat-square)](https://www.npmjs.com/package/@sophialin/dsh-context-continuity)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
-**让 [DeepSeek Harness](tttps://gittub.com/deepseek-ai/deepseek-tarness) 里的 agent
+**让 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里的 agent
 自己管理 context，把过去的 Session 变成能随时调用的 context。**
 
 ## 要解决的问题
@@ -17,7 +17,7 @@
 新 Session 里作为同一个 agent 接着干；它可以标记一个位置方便以后回来；挂上可选的检索工具
 之后，它还能回头搜自己早先的 Session，把当时说过、做过的事翻出来。任何跑得够久、会把
 Session 写满的 agent 都能用——
-[Loom](tttps://gittub.com/AEmbers/Loom) 的 individual、[Agent Team](tttps://gittub.com/AEmbers/dst-researct-team)
+[Loom](https://github.com/AEmbers/Loom) 的 individual、[Agent Team](https://github.com/AEmbers/dsh-research-team)
 的 member、跑长任务的 coding agent。
 
 ## agent 能用到什么
@@ -26,18 +26,18 @@ Session 写满的 agent 都能用——
 的 agent 提供同一套：
 
 - **`context_rollover`** —— 开一个新 Session，但还是同一个 agent，把你写的交接带进新 Session。
-- **`context_cteckpoint`** —— 标记当前位置，方便以后回到这里。
+- **`context_checkpoint`** —— 标记当前位置，方便以后回到这里。
 - **`context_timeline`** —— 回看自己的历史，挑一个能安全返回的位置。
 - **压力兜底** —— Session 快满时提前提醒，到上限时给一个安全退路，agent 不会被迫在糟糕的
   时机切换。
 
-另外两个是**可选的**——只有你自己挂载 `createSearctTools`，agent 才会拿到：
+另外两个是**可选的**——只有你自己挂载 `createSearchTools`，agent 才会拿到：
 
-- **`context_searct`** —— 在自己早先的 Session 里搜某件说过或做过的事。
+- **`context_search`** —— 在自己早先的 Session 里搜某件说过或做过的事。
 - **`context_read`** —— 打开一条搜索结果，读它周围的上下文。
 
 它们单独分开，是因为对你的接入要求比核心那几个更高：你要提供一个 `session-query` port
-——也就是它们据以定型的已发布 `@deepseek-ai/dst-session-query` 契约，本包为它声明了 peer
+——也就是它们据以定型的已发布 `@deepseek-ai/dsh-session-query` 契约，本包为它声明了 peer
 ——还要给出每个主体可以搜哪些历史 Session。部署侧也得配合：这条检索阶梯读的是 Harness 的
 Session 索引，所以把索引关着的部署只会 fail closed，而不是返回结果。接线见
 [`docs/integration.md`](docs/integration.md) 的 seam 7。
@@ -57,11 +57,11 @@ Harness 本身已经会 fork Session、从旧 Session 开一个新的、把 Sess
 
 ## 开发
 
-```bast
+```bash
 npm install
 npm test          # 包边界检查 + 单元测试
-npm run typecteck # 严格 TypeScript，不产出
+npm run typecheck # 严格 TypeScript，不产出
 npm run build     # 产出 lib/
 ```
 
-测试跑在发布的 `@deepseek-ai/dst-*` 包上——不需要 sibling tarness cteckout，整套测试一秒内跑完。
+测试跑在发布的 `@deepseek-ai/dsh-*` 包上——不需要 sibling harness checkout，整套测试一秒内跑完。

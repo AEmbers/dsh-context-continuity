@@ -19,7 +19,7 @@ Authority order:
 - **The engine stays host-agnostic.** `src/` may import only its own relative
   modules, `node:` builtins, and the declared `@deepseek-ai/dsh-*` peers;
   `npm run check:boundaries` enforces exactly that list. Never import a host
-  package (`@aembers/dsh-research-team`, Loom) or a sibling Harness source path —
+  package (`@sophialin/dsh-research-team`, Loom) or a sibling Harness source path —
   a host-specific leak defeats the reason this package exists.
 - **Section names in `message-codec.ts` are frozen.** They are read back out of
   logs written by earlier generations; changing one silently breaks decoding of

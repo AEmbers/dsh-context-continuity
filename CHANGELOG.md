@@ -1,16 +1,23 @@
-# @aembers/dsh-context-continuity
+# @sophialin/dsh-context-continuity
 
-This repository is the `@aembers` fork of the context-continuity engine.
+This repository is the `@sophialin` fork of the context-continuity engine.
 
 The engine was extracted from `packages/context-continuity` of
 `wowyuarm/dsh-plugins` at tag `@wowyuarm/dsh-context-continuity@0.1.6`, renamed to
-`@aembers/dsh-context-continuity`, and repointed at this repository. `src/`,
+`@sophialin/dsh-context-continuity`, and repointed at this repository. `src/`,
 `tests/` and the exports below are the upstream release; only the package name,
 the repository metadata and the standalone build configuration differ.
 
-The release notes below are upstream's own. They describe the upstream package
-name and, where they mention npm, the upstream publication — this fork is
-consumed from this repository, not from the registry.
+The fork is published to the registry as `@sophialin/dsh-context-continuity`. The
+release notes below 0.1.7 are upstream's own: they describe the upstream package
+name and, where they mention npm, the upstream publication.
+
+## 0.1.10
+
+### Patch Changes
+
+- **中文**：整包移到 `@sophialin` scope。npm 上没有 `@aembers` 组织，发布被 `Scope not found` 拒掉。改名同时修好了两个 README——它们在更早一次改名脚本里被一个失控的替换损坏（整篇的 `h` 变成了 `t`：`https://` 读作 `tttps://`、`dsh-` 读作 `dst-`、`shields` 读作 `stields`、`English` 读作 `Englist`）。现已从上游 `@wowyuarm/dsh-context-continuity@0.1.6` 的原文恢复，再按新 scope 重新改名。`src/` 只动了各文件头的 `@module` 注释。
+- **English**: the package moves to the `@sophialin` scope. npm has no `@aembers` organization, so the publish was refused with `Scope not found`. The rename also repairs both READMEs, which an earlier rename script had corrupted with a runaway replacement — every `h` had become a `t`, so `https://` read `tttps://`, `dsh-` read `dst-`, `shields` read `stields` and `English` read `Englist`. They are restored from the upstream `@wowyuarm/dsh-context-continuity@0.1.6` text and renamed to the new scope. `src/` changed only in its file-header `@module` comments.
 
 ## 0.1.9
 

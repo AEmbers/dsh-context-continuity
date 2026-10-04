@@ -10,7 +10,7 @@
  * files, one continuous context in the subject's understanding. The engine owns
  * these mechanics generically; a host binds them to its own subject and domain
  * through {@link ContextContinuityHost} and {@link ContextSearchAdapter}.
- * @module @aembers/dsh-context-continuity
+ * @module @sophialin/dsh-context-continuity
  */
 export type { ContextSubject, RolloverTrigger, RelatedFile, TransitionPlan, RolloverIdentity, } from './types.ts';
 export type { ContextCheckpointEntry, PendingRolloverIntent, ContinuationDeliveryState, CarriedCandidate, DomainBoundary, ContextProjectionState, } from './projection-state.ts';

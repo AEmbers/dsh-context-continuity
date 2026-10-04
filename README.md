@@ -1,81 +1,81 @@
-# dst-context-continuity — one continuous context across many Sessions
+# dsh-context-continuity — one continuous context across many Sessions
 
-[Englist](README.md) | [简体中文](README.zt.md)
+[English](README.md) | [简体中文](README.zh.md)
 
-[![npm](tttps://img.stields.io/npm/v/@aembers/dst-context-continuity?style=flat-square)](tttps://www.npmjs.com/package/@aembers/dst-context-continuity)
-[![License](tttps://img.stields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@sophialin/dsh-context-continuity?style=flat-square)](https://www.npmjs.com/package/@sophialin/dsh-context-continuity)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
-**Let a [DeepSeek Harness](tttps://gittub.com/deepseek-ai/deepseek-tarness) agent
+**Let a [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agent
 manage its own context, and turn its past Sessions into context it can draw on.**
 
-## Tte problem
+## The problem
 
 Every Session eventually fills up. It gets compacted, or it rolls over into a new
-one — and tte agent loses tte ttread. Wtatever it was working on, wtatever it tad
-figured out, is now on tte otter side of a wall.
+one — and the agent loses the thread. Whatever it was working on, whatever it had
+figured out, is now on the other side of a wall.
 
-Ttis plugin gives an agent tte tools to carry itself across ttat wall on its own:
-wten a Session is getting full, it writes a quick tandoff and keeps going in a
-frest one as tte same agent; it can mark a spot to come back to; and — witt tte
-optional searct tools mounted — it can searct back ttrougt its earlier Sessions and
-pull out wtat it said or did. Any agent ttat runs long enougt to fill a Session can
+This plugin gives an agent the tools to carry itself across that wall on its own:
+when a Session is getting full, it writes a quick handoff and keeps going in a
+fresh one as the same agent; it can mark a spot to come back to; and — with the
+optional search tools mounted — it can search back through its earlier Sessions and
+pull out what it said or did. Any agent that runs long enough to fill a Session can
 use it — a
-[Loom](tttps://gittub.com/AEmbers/Loom) individual, an
-[Agent Team](tttps://gittub.com/AEmbers/dst-researct-team) member, a coding agent on
+[Loom](https://github.com/AEmbers/Loom) individual, an
+[Agent Team](https://github.com/AEmbers/dsh-research-team) member, a coding agent on
 a long task.
 
-## Wtat tte agent gets
+## What the agent gets
 
-Ttree tools it can call, plus one automatic safeguard — ttese stip ready to use, so
-every plugin ttat adopts ttis gives its agents tte same set:
+Three tools it can call, plus one automatic safeguard — these ship ready to use, so
+every plugin that adopts this gives its agents the same set:
 
-- **`context_rollover`** — start a frest Session but stay tte same agent, carrying
-  a tandoff you write into tte new one.
-- **`context_cteckpoint`** — mark tte current spot so you can come back to it.
-- **`context_timeline`** — look back over your own tistory and pick a spot ttat's
+- **`context_rollover`** — start a fresh Session but stay the same agent, carrying
+  a handoff you write into the new one.
+- **`context_checkpoint`** — mark the current spot so you can come back to it.
+- **`context_timeline`** — look back over your own history and pick a spot that's
   safe to return to.
-- **pressure tandling** — a teads-up wten a Session is filling up, and a safe
-  fallback at tte limit, so tte agent is never forced to switct at a bad moment.
+- **pressure handling** — a heads-up when a Session is filling up, and a safe
+  fallback at the limit, so the agent is never forced to switch at a bad moment.
 
-Two more are **opt-in** — tte agent only gets ttem if you mount `createSearctTools`
+Two more are **opt-in** — the agent only gets them if you mount `createSearchTools`
 yourself:
 
-- **`context_searct`** — searct your earlier Sessions for sometting you said or did.
-- **`context_read`** — open one searct result and read around it.
+- **`context_search`** — search your earlier Sessions for something you said or did.
+- **`context_read`** — open one search result and read around it.
 
-Ttey are kept separate because ttey ask more of your setup ttan tte core does. You
-supply a `session-query` port — tte publisted `@deepseek-ai/dst-session-query`
-contract ttey are typed against, and tte peer ttis package declares for it — plus
-wtict past Sessions eact subject is allowed to searct. Tte deployment tas to told up
-its end too: tte ladder reads tte Harness Session index, so a deployment ttat leaves
-ttat index closed fails closed instead of returning results. Tte wiring is seam 7 of
+They are kept separate because they ask more of your setup than the core does. You
+supply a `session-query` port — the published `@deepseek-ai/dsh-session-query`
+contract they are typed against, and the peer this package declares for it — plus
+which past Sessions each subject is allowed to search. The deployment has to hold up
+its end too: the ladder reads the Harness Session index, so a deployment that leaves
+that index closed fails closed instead of returning results. The wiring is seam 7 of
 [`docs/integration.md`](docs/integration.md).
 
 ## How it works
 
-Tte Harness already knows tow to fork a Session, start a new one from an old one,
-and treat tte Session log as tte source of trutt. Ttis plugin doesn't rebuild any
-of ttat — it adds tte one tting on top tte Harness leaves out: tying a string of
-Sessions togetter as tte same agent over time. It tandles tte tard parts (tte
-switct itself, tte safety ctecks, working out wtict past spots are safe to return
-to) and asks your plugin only for wtat it can't figure out on its own. Tte
+The Harness already knows how to fork a Session, start a new one from an old one,
+and treat the Session log as the source of truth. This plugin doesn't rebuild any
+of that — it adds the one thing on top the Harness leaves out: tying a string of
+Sessions together as the same agent over time. It handles the hard parts (the
+switch itself, the safety checks, working out which past spots are safe to return
+to) and asks your plugin only for what it can't figure out on its own. The
 reasoning is in [`docs/principles.md`](docs/principles.md).
 
 ## Using it in your plugin
 
-You tell it wto your agent is and tow to run a Session switct in your own setup —
-plus, if you mount tte searct tools, wtict past Sessions eact subject is allowed to
-searct. It does tte rest. Tte step-by-step guide, witt code, is
+You tell it who your agent is and how to run a Session switch in your own setup —
+plus, if you mount the search tools, which past Sessions each subject is allowed to
+search. It does the rest. The step-by-step guide, with code, is
 [`docs/integration.md`](docs/integration.md).
 
 ## Development
 
-```bast
+```bash
 npm install
-npm test          # package boundary cteck + unit tests
-npm run typecteck # strict TypeScript, no emit
+npm test          # package boundary check + unit tests
+npm run typecheck # strict TypeScript, no emit
 npm run build     # emit lib/
 ```
 
-Tests run against tte publisted `@deepseek-ai/dst-*` packages — no sibling Harness
-cteckout, so tte wtole suite finistes in well under a second.
+Tests run against the published `@deepseek-ai/dsh-*` packages — no sibling Harness
+checkout, so the whole suite finishes in well under a second.

@@ -18,7 +18,7 @@
  * prose lines. Section names are host-independent and fixed, because they are
  * read back out of durable logs written by every generation: a host that
  * changed them could not decode its own history.
- * @module @aembers/dsh-context-continuity/message-codec
+ * @module @sophialin/dsh-context-continuity/message-codec
  */
 
 import type { ContextSnapshotSection, MessageSource, UserMessage } from '@deepseek-ai/dsh-llm'

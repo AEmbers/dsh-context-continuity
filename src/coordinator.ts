@@ -14,7 +14,7 @@
  * turn to end and the Agent to be idle, captures later input so no
  * old-generation model request opens, and then defers to the host lifecycle
  * through {@link ContextContinuityHost.executeTransition}.
- * @module @aembers/dsh-context-continuity/coordinator
+ * @module @sophialin/dsh-context-continuity/coordinator
  */
 
 import type { Agent } from '@deepseek-ai/dsh-agent'
